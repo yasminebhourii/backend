@@ -7,7 +7,7 @@ controller.signUp = async (req, res) => {
     const existingUser = await User.findOne({ email: req.body.email });
 
     // If user already signed up, don't allow them to make another account
-    if (existingUser) {
+    if ( existingUser ) {
       return res.send({message:"already signed up",success:false});
     }
 
@@ -30,7 +30,7 @@ controller.signUp = async (req, res) => {
 };
 controller.update=(req, res) => {
   User.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedUser) => {
-    if (err) {
+    if ( err ) {
       res.send({err,success:false});
     }else{
       res.json({updatedUser,message:"user updated succesfulay",success:true});
